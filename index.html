@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Poster for Namatovu Kevin - Queen Fresher</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Poster-like styles */
+        .poster {
+            width: 297mm; /* A4 width; adjust for printing as A3 */
+            height: 420mm; /* A4 height */
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            margin: 10px auto;
+        }
+        .poster-header {
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .poster-image {
+            max-width: 150mm;
+            max-height: 150mm;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        .poster-bio {
+            text-align: center;
+            margin: 10mm 0;
+            font-size: 18pt;
+        }
+        .poster-manifesto {
+            background: rgba(255,255,255,0.1);
+            padding: 10mm;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 200mm;
+        }
+        .poster-footer {
+            text-align: center;
+            font-size: 14pt;
+            flex-shrink: 0;
+        }
+        @media print {
+            .poster {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <div id="poster" class="poster bg-white text-gray-900">
+            <div class="poster-header">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Vote for Namatovu Kevin</h1>
+                <p class="text-xl md:text-2xl">Candidate for Queen Fresher</p>
+                <p class="text-lg">Uganda Martyrs University Nkozi</p>
+            </div>
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6581b84d-2772-483c-8638-11170f80fd12.png" alt="A confident and approachable young woman with a warm smile, wearing blue and white university attire, posed in a lush green campus setting with modern buildings in the background, capturing leadership potential and friendliness, styled in a vibrant and positive manner to evoke trust and inspiration." class="poster-image" />
+            <div class="poster-bio">
+                <p>"Bringing energy, vision, and leadership to represent all freshers!"</p>
+                <ul class="list-disc list-inside mt-4 space-y-2">
+                    <li>Enhance Student Welfare & Support Services</li>
+                    <li>Organize Vibrant Cultural & Social Events</li>
+                    <li>Promote Academic Excellence & Mentorship</li>
+                    <li>Bridge Communication Between Stakeholders</li>
+                </ul>
+            </div>
+            <div class="poster-manifesto">
+                <h2 class="text-2xl font-semibold mb-4">My Manifesto</h2>
+                <p class="text-lg">Together, we can create a campus of opportunity, unity, and success. Your vote matters!</p>
+            </div>
+            <div class="poster-footer">
+                <p>© 2023 Namatovu Kevin Campaign</p>
+                <p>Contact: kevin.campaign@umun.kozi.edu | Visit namatokevin.com</p>
+                <p>Follow: @KevinQueenFresher on Social Media</p>
+                <p>Election Day: November 1, 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Optional: JavaScript to make it responsive or add interactivity if needed (e.g., print button)
+        const printButton = document.createElement('button');
+        printButton.textContent = 'Print Poster';
+        printButton.className = 'mt-4 px-6 py-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 mx-auto block';
+        printButton.onclick = () => window.print();
+        document.body.appendChild(printButton);
+    </script>
+</body>
+</html>
+</content>
+</create_file>
