@@ -54,6 +54,9 @@
                 margin: 0;
             }
         }
+        canvas {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -64,7 +67,7 @@
                 <p class="text-xl md:text-2xl">Candidate for Queen Fresher</p>
                 <p class="text-lg">Uganda Martyrs University Nkozi</p>
             </div>
-            <img src="Kevin3.png" alt="A confident and approachable young woman with a warm smile, wearing blue and white university attire, posed in a lush green campus setting with modern buildings in the background, capturing leadership potential and friendliness, styled in a vibrant and positive manner to evoke trust and inspiration." class="poster-image" />
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6581b84d-2772-483c-8638-11170f80fd12.png" alt="A confident and approachable young woman with a warm smile, wearing blue and white university attire, posed in a lush green campus setting with modern buildings in the background, capturing leadership potential and friendliness, styled in a vibrant and positive manner to evoke trust and inspiration." class="poster-image" />
             <div class="poster-bio">
                 <p>"Bringing energy, vision, and leadership to represent all freshers!"</p>
                 <ul class="list-disc list-inside mt-4 space-y-2">
@@ -79,21 +82,83 @@
                 <p class="text-lg">Together, we can create a campus of opportunity, unity, and success. Your vote matters!</p>
             </div>
             <div class="poster-footer">
-                <p>© 2025 Namatovu Kevin Campaign</p>
-                <p>Contact: namatovu.kevin@stud.umu.ac.ug| Visit namatokevin.com</p>
-                <p>Follow: @KevinQueenFresher on Social Media</p>
+                <p>© 2023 Namatovu Kevin Campaign</p>
+                <p>Contact: namatovu.kevin@stud.umu.ac.ug</p>
                 <p>Election Day: September 4, 2025</p>
             </div>
         </div>
+        <button id="saveButton" class="mt-4 px-6 py-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 mx-auto block">Save Poster as Image</button>
+        <a id="downloadLink" style="display: none;"></a>
     </div>
 
+    <canvas id="posterCanvas" width="841" height="1189"></canvas> <!-- A3 size in pixels at 96 DPI -->
+
     <script>
-        // Optional: JavaScript to make it responsive or add interactivity if needed (e.g., print button)
-        const printButton = document.createElement('button');
-        printButton.textContent = 'Print Poster';
-        printButton.className = 'mt-4 px-6 py-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 mx-auto block';
-        printButton.onclick = () => window.print();
-        document.body.appendChild(printButton);
+        document.getElementById('saveButton').addEventListener('click', function() {
+            const canvas = document.getElementById('posterCanvas');
+            const ctx = canvas.getContext('2d');
+            const img = new Image();
+            img.crossOrigin = 'anonymous'; // To handle CORS if image is from another domain
+            img.onload = function() {
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Draw background gradient
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, '#ff6b6b');
+                gradient.addColorStop(1, '#4ecdc4');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // Set text styles
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'center';
+
+                // Header text
+                ctx.font = 'bold 72px Arial';
+                ctx.fillText('Vote for Namatovu Kevin', canvas.width / 2, 150);
+                ctx.font = 'bold 36px Arial';
+                ctx.fillText('Candidate for Queen Fresher', canvas.width / 2, 200);
+                ctx.fillText('Uganda Martyrs University Nkozi', canvas.width / 2, 250);
+
+                // Draw image
+                ctx.drawImage(img, canvas.width / 2 - 150, 300, 300, 300); // Adjust size and position
+
+                // Bio text
+                ctx.font = '24px Arial';
+                ctx.fillText('"Bringing energy, vision, and leadership to represent all freshers!"', canvas.width / 2, 700);
+                ctx.font = '18px Arial';
+                ctx.fillText('• Enhance Student Welfare & Support Services', canvas.width / 2, 750);
+                ctx.fillText('• Organize Vibrant Cultural & Social Events', canvas.width / 2, 780);
+                ctx.fillText('• Promote Academic Excellence & Mentorship', canvas.width / 2, 810);
+                ctx.fillText('• Bridge Communication Between Stakeholders', canvas.width / 2, 840);
+
+                // Manifesto
+                ctx.fillStyle = 'rgba(255,255,255,0.1)';
+                ctx.fillRect(canvas.width / 2 - 150, 870, 300, 100);
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText('My Manifesto', canvas.width / 2, 900);
+                ctx.font = '16px Arial';
+                ctx.fillText('Together, we can create a campus of opportunity,', canvas.width / 2, 930);
+                ctx.fillText('unity, and success. Your vote matters!', canvas.width / 2, 950);
+
+                // Footer
+                ctx.font = '14px Arial';
+                ctx.fillText('© 2023 Namatovu Kevin Campaign', canvas.width / 2, 1050);
+                ctx.fillText('Contact: namatovu.kevin@stud.umu.ac.ug | Visit namatokevin.com', canvas.width / 2, 1080);
+                ctx.fillText('Follow: @KevinQueenFresher on Social Media', canvas.width / 2, 1110);
+                ctx.fillText('Election Day: September 4, 2025', canvas.width / 2, 1140);
+
+                // Download
+                const link = document.getElementById('downloadLink');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'Namatovu_Kevin_Poster.png';
+                link.style.display = 'none';
+                link.click();
+                alert('Poster downloaded as PNG!');
+            };
+            img.src = 'Kevin3.png'; // Same as in HTML
+        });
     </script>
 </body>
 </html>
